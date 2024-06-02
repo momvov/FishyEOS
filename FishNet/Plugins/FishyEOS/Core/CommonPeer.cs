@@ -142,7 +142,7 @@ namespace FishNet.Transporting.FishyEOSPlugin
             };
             data = new ArraySegment<byte>(new byte[packetSize]);
             var receivePacketResult = EOS.GetCachedP2PInterface().ReceivePacket(ref receivePacketOptions,
-                out remoteUserId, out _, out var channelByte, data, out _);
+                ref remoteUserId, ref _, out var channelByte, data, out _);
             channel = (Channel)channelByte;
             if (receivePacketResult != Result.Success)
             {
